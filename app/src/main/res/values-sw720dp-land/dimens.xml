@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="navigation_title_height">56dp</dimen>
+
+    <!-- better naming sceme for the text dimensions -->
+    <dimen name="text_xs">16sp</dimen>
+    <dimen name="text_s">18sp</dimen>
+    <dimen name="text_m">19sp</dimen>
+    <dimen name="text_l">20sp</dimen>
+    <dimen name="text_xl">21sp</dimen>
+    <dimen name="text_xxl">22sp</dimen>
+
+</resources>

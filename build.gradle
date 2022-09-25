@@ -1,0 +1,15 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    // https://github.com/matiascalvo/compose-kotlin-repositories/blob/main/build.gradle
+    alias libs.plugins.androidApplication apply false
+    alias libs.plugins.androidLibrary apply false
+    alias libs.plugins.kotlinAndroid apply false
+    alias libs.plugins.gradleVersionsPlugin
+    alias libs.plugins.versionCatalogUpdatePlugin
+}
+
+apply from: "$project.rootDir/gradle/version_catalog_update.gradle"
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
