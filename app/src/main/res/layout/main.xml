@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
     <EditText
         android:layout_width="match_parent"
-        android:textSize="@dimen/_16font_ssp"
+        android:textSize="?attr/nab.editTextSize"
         android:hint="@string/input_city"
         android:padding="@dimen/_5hsdp"
         android:id="@+id/edtInput"
@@ -17,8 +18,8 @@
     <Button
         android:text="@string/get_weather"
         android:layout_height="wrap_content"
+        android:textSize="?attr/nab.buttonTextSize"
         android:layout_width="wrap_content"
-        android:textSize="@dimen/_16font_ssp"
         android:padding="@dimen/_5hsdp"
         android:textStyle="bold"
         android:id="@+id/btnGetWeather"
@@ -28,6 +29,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/listWeather"
+        tools:itemCount="100"
+        tools:listitem="@layout/item_weather"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:orientation="vertical"
         android:layout_height="match_parent"/>

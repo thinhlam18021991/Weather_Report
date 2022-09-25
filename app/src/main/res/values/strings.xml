@@ -2,5 +2,9 @@
     <string name="app_name">Weather Forecast</string>
     <string name="get_weather">Get Weather</string>
     <string name="input_city">Input city</string>
-
+    <string name="date">Date: %s</string>
+    <string name="temperature">Average temperature: %s</string>
+    <string name="pressure">Pressure: %s</string>
+    <string name="humidity">Humidity: %s</string>
+    <string name="description">Description: %s</string>
 </resources>

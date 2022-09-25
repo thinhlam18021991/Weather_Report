@@ -19,3 +19,5 @@ enableFeaturePreview("VERSION_CATALOGS")
 rootProject.name = "NAB"
 include ':app'
 include ':security'
+include ':network'
+include ':shared'

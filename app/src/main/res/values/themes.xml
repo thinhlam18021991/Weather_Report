@@ -16,8 +16,10 @@
         </item>
         <item name="fontFamily">sans-serif-thin</item>
         <item name="android:textColor">@color/black</item>
-<!--        <item name="textAppearanceButton">@style/Widget.AppCompat.Button</item>-->
-        <!-- Customize your theme here. -->
+        <item name="nab.editTextSize">@dimen/_20font_ssp</item>
+        <item name="nab.textViewTextSize">@dimen/_16font_ssp</item>
+        <item name="nab.buttonTextSize">@dimen/_18font_ssp</item>
+
     </style>
 
 

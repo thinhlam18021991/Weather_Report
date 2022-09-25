@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="nab.editTextSize" format="dimension"/>
+    <attr name="nab.textViewTextSize" format="dimension"/>
+    <attr name="nab.buttonTextSize" format="dimension"/>
+</resources>
