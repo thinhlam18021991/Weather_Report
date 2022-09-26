@@ -1,6 +1,5 @@
-package com.assignment.nab.presentation.weatherlist
+package com.assignment.nab.presentation
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.assignment.model.Result
 import com.assignment.model.WeatherModel
 import com.assignment.nab.domain.usecase.GetWeatherUseCase
-import com.assignment.utils.SingleLiveEvent
+import com.assignment.base.reactive.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,9 +16,9 @@ import javax.inject.Inject
 class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: GetWeatherUseCase) :
     ViewModel() {
 
-    private val loading = SingleLiveEvent<Boolean>()
+    private val loading = com.assignment.base.reactive.SingleLiveEvent<Boolean>()
     private val listWeather = MutableLiveData<List<WeatherModel>>()
-    private val error = SingleLiveEvent<String>()
+    private val error = com.assignment.base.reactive.SingleLiveEvent<String>()
 
     val loadingLiveData: LiveData<Boolean> = loading
     val listWeatherLiveData: LiveData<List<WeatherModel>> = listWeather

@@ -64,7 +64,7 @@ dependencies {
     implementation project(":model")
     implementation project(":networkmodel")
     implementation project(":network")
-    implementation project(":utils")
+    implementation project(":base")
 
     implementation libs.corektx
     // appcompat

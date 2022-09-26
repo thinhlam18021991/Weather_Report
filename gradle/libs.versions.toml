@@ -23,6 +23,7 @@ lifecycleViewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", ve
 lifecycleLiveData = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleVersion" }
 fragmentKtx = "androidx.fragment:fragment-ktx:1.5.0"
 gson = "com.google.code.gson:gson:2.9.0"
+kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:1.7.10"
 
 # Although it's plugin, but use in `classpath`, that's why it's not in `[bundles]`
 daggerHiltPlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "daggerHiltVersion" }

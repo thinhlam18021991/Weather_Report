@@ -1,36 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:textSize="?attr/nab.editTextSize"
-        android:hint="@string/input_city"
-        android:padding="@dimen/_5hsdp"
-        android:id="@+id/edtInput"
-        android:textStyle="normal"
-       android:layout_height="wrap_content"/>
-    <Button
-        android:text="@string/get_weather"
-        android:layout_height="wrap_content"
-        android:textSize="?attr/nab.buttonTextSize"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edtInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/input_city"
+            android:padding="@dimen/_5hsdp"
+            android:textSize="?attr/nab.editTextSize"
+            android:textStyle="normal" />
+
+        <Button
+            android:id="@+id/btnGetWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/grey"
+            android:padding="@dimen/_5hsdp"
+            android:text="@string/get_weather"
+            android:textColor="@color/black"
+            android:textSize="?attr/nab.buttonTextSize"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listWeather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:itemCount="100"
+            android:paddingLeft="@dimen/_5hsdp"
+            android:paddingRight="@dimen/_5hsdp"
+            tools:listitem="@layout/item_weather" />
+    </LinearLayout>
+
+    <ProgressBar
         android:layout_width="wrap_content"
-        android:padding="@dimen/_5hsdp"
-        android:textStyle="bold"
-        android:id="@+id/btnGetWeather"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/grey"
-        />
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:id="@+id/listWeather"
-        tools:itemCount="100"
-        tools:listitem="@layout/item_weather"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:orientation="vertical"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:id="@+id/loading"
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>

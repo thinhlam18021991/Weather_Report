@@ -31,8 +31,8 @@ android {
 }
 
 dependencies {
-    implementation project(":networkmodel")
-    implementation project(":utils")
-
-    implementation libs.kotlinReflect
+    // live data
+    implementation libs.lifecycleLiveData
+    // material
+    implementation libs.googleMaterial
 }
