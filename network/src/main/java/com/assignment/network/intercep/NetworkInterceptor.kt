@@ -37,7 +37,7 @@ class NetworkInterceptor: Interceptor {
             return originalResponse.newBuilder()
                 .header(
                     "Cache-Control",
-                    "public, max-age=$maxAge, max-stale=$maxStale, s-max-age=$maxAge",
+                    "public, max-age=$maxAge, max-stale=$maxStale",
                 )
                 .removeHeader("Pragma").build()
         }

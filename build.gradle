@@ -1,4 +1,11 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    dependencies {
+        classpath(libs.daggerHiltPlugin)
+    }
+}
+
 plugins {
     // https://github.com/matiascalvo/compose-kotlin-repositories/blob/main/build.gradle
     alias libs.plugins.androidApplication apply false

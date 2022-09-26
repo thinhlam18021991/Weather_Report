@@ -1,7 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
 }
+
+apply plugin: "kotlin-kapt"
+
 
 android {
     compileSdk 32
@@ -17,15 +21,37 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
     }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        dev {
+            dimension "default"
+            buildConfigField "String", "END_POINT", "\"https://api.openweathermap.org/data/2.5/\""
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    viewBinding {
+        enabled true
+    }
+
     kotlinOptions {
         jvmTarget = '1.8'
     }
@@ -35,8 +61,31 @@ android {
 dependencies {
     implementation project(":security")
     implementation project(":shared")
+    implementation project(":model")
+    implementation project(":networkmodel")
+    implementation project(":network")
+    implementation project(":utils")
+
     implementation libs.corektx
+    // appcompat
     implementation libs.appcompat
+    // material
     implementation libs.googleMaterial
+    // dagger hilt
+    implementation libs.daggerHiltAndroid
+    kapt libs.daggerHiltAndroidCompile
+
+    // viewmodel
+    implementation libs.lifecycleViewModel
+
+    // live data
+    implementation libs.lifecycleLiveData
+
+    // fragment
+    implementation libs.fragmentKtx
+
+
+    // unit test
     testImplementation libs.junit
+
 }

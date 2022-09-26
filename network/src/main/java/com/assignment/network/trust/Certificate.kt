@@ -7,7 +7,6 @@ import java.security.cert.X509Certificate
 
 object Certificate {
 
-
     // apply SSL certificate
     // for now dont have certificate
     fun OkHttpClient.Builder.applyCertificateIfNeeded(certificateString: String) = apply {
