@@ -1,7 +1,7 @@
 package com.assignment.nab.domain.repository
 
 import com.assignment.model.Result
-import com.assignment.model.WeatherModel
+import com.assignment.model.weather.WeatherModel
 
 
 interface WeatherRepository {

@@ -3,7 +3,7 @@ package com.assignment.nab.presentation.adapter
 import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import com.assignment.base.viewholder.BaseViewHolder
-import com.assignment.model.WeatherModel
+import com.assignment.model.weather.WeatherModel
 import com.assignment.nab.R
 import com.assignment.nab.databinding.ItemWeatherBinding
 

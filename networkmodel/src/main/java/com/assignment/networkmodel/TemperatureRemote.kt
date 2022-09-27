@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TemperatureRemote(
     @SerializedName("min")
-    val min: Double?,
+    val min: Double? = null,
     @SerializedName("max")
-    val max: Double?,
+    val max: Double? = null,
 )

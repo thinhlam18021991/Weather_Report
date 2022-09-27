@@ -2,6 +2,8 @@ package com.assignment.nab.presentation.di
 
 import com.assignment.nab.data.repository.WeatherRepositoryImpl
 import com.assignment.nab.domain.repository.WeatherRepository
+import com.assignment.security.SecurityNab
+import com.assignment.security.SecurityNabImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -24,6 +26,9 @@ object WeatherListModule {
     @IoDispatcher
     fun provideIoDispatcher(): CoroutineDispatcher = Dispatchers.IO
 
+    @Provides
+    fun provideSecurityNab(): SecurityNab = SecurityNabImpl()
+
 }
 
 @Module
@@ -34,6 +39,8 @@ abstract class WeatherListBinding {
     abstract fun bindWeatherListRepository(
         impl: WeatherRepositoryImpl
     ): WeatherRepository
+
+
 }
 
 

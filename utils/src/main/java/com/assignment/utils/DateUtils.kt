@@ -1,14 +1,12 @@
 package com.assignment.utils
 
-import androidx.annotation.VisibleForTesting
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
 
 object DateUtils {
 
-    @VisibleForTesting
-    val DEFAULT_LOCALE: Locale = Locale.US
+    private val DEFAULT_LOCALE: Locale = Locale.US
 
     // Date pattern as `Sun, 15 Mar 2019`
     private const val PATTERN_MMM_DD_YYYY = "EEE, dd MMM yyyy"

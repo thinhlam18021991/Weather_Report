@@ -56,6 +56,12 @@ android {
         jvmTarget = '1.8'
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
 }
 
 dependencies {
@@ -87,5 +93,8 @@ dependencies {
 
     // unit test
     testImplementation libs.junit
+    testImplementation libs.mockito
+    testImplementation libs.truth
+    testImplementation libs.roboElectric
 
 }

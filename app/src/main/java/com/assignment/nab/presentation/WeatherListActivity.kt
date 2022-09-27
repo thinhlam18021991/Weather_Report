@@ -53,6 +53,10 @@ class WeatherListActivity: AppCompatActivity() {
 
     private fun registerObservable()
     {
+        viewModel.loadingLiveData.observe(this) {
+            binding.loading.visibility = View.VISIBLE
+        }
+
         viewModel.listWeatherLiveData.observe(this) {
             adapter.serData(it)
         }
@@ -61,12 +65,8 @@ class WeatherListActivity: AppCompatActivity() {
             Snackbar.make(binding.root, it, Snackbar.LENGTH_LONG).show()
         }
 
-        viewModel.loadingLiveData.observe(this) {
-            if (it)
-                binding.loading.visibility = View.VISIBLE
-            else
-                binding.loading.visibility = View.GONE
-
+        viewModel.hideLoadingLiveData.observe(this) {
+            binding.loading.visibility = View.GONE
         }
     }
 }

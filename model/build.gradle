@@ -34,5 +34,10 @@ dependencies {
     implementation project(":networkmodel")
     implementation project(":utils")
 
+    // Need Kotlin Reflect for test method pt.rocket.framework.objects.DataModelHelperKt.numberPropertiesOfDataClass
     implementation libs.kotlinReflect
+
+    // unit test
+    testImplementation libs.junit
+    testImplementation libs.truth
 }

@@ -3,8 +3,7 @@ package com.assignment.nab.presentation.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.assignment.base.viewholder.BaseViewHolder
-import com.assignment.model.WeatherModel
-import com.assignment.nab.R
+import com.assignment.model.weather.WeatherModel
 
 class WeatherListAdapter(): RecyclerView.Adapter<BaseViewHolder>() {
 

@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName
 
 data class ForecastRemote(
     @SerializedName("dt")
-    val date: Long?,
+    val date: Long? = null,
     @SerializedName("temp")
-    val temp: TemperatureRemote?,
+    val temp: TemperatureRemote? = null,
     @SerializedName("pressure")
-    val pressure: Int?,
+    val pressure: Int? = null,
     @SerializedName("humidity")
-    val humidity: Int?,
+    val humidity: Int? = null,
     @SerializedName("weather")
-    val weatherList: List<ChildWeatherRemote>?,
+    val weatherList: List<ChildWeatherRemote>? = null,
 )

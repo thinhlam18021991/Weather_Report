@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.assignment.model.Result
-import com.assignment.model.WeatherModel
+import com.assignment.model.weather.WeatherModel
 import com.assignment.nab.domain.usecase.GetWeatherUseCase
-import com.assignment.base.reactive.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,26 +15,29 @@ import javax.inject.Inject
 class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: GetWeatherUseCase) :
     ViewModel() {
 
-    private val loading = com.assignment.base.reactive.SingleLiveEvent<Boolean>()
-    private val listWeather = MutableLiveData<List<WeatherModel>>()
-    private val error = com.assignment.base.reactive.SingleLiveEvent<String>()
+    private val loading = MutableLiveData<Unit>()
+    private val hideLoading = MutableLiveData<Unit>()
 
-    val loadingLiveData: LiveData<Boolean> = loading
+    private val listWeather = MutableLiveData<List<WeatherModel>>()
+    private val error = MutableLiveData<String>()
+
+    val loadingLiveData: LiveData<Unit> = loading
+    val hideLoadingLiveData: LiveData<Unit> = hideLoading
     val listWeatherLiveData: LiveData<List<WeatherModel>> = listWeather
     val errorLiveData: LiveData<String> = error
 
     fun getListWeather(cityName: String) {
         viewModelScope.launch {
-            loading.value = true
+            loading.postValue(Unit)
             when (val result = getWeatherUseCase(cityName)) {
                 is Result.Success -> {
-                    listWeather.value = result.data
+                    listWeather.postValue(result.data)
                 }
                 is Result.Error -> {
-                    error.value = result.error
+                    error.postValue(result.error)
                 }
             }
-            loading.value = false
+            hideLoading.postValue(Unit)
         }
 
     }
