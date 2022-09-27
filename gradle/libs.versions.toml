@@ -1,4 +1,6 @@
 [versions]
+minSdkVersion = "24"
+targetSdkVersion = "32"
 daggerHiltVersion = "2.38.1"
 retrofitVersion = "2.9.0"
 okHttpVersion = "4.9.3"
