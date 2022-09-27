@@ -11,7 +11,7 @@ The purpose of this document is to provide developers the overview of this proje
  
 ## App Architecture
 
-- Project apply MVVM+Clean architect for each feature.
+- Project apply MVVM+Clean architect for each feature module.
 - There are 3 layers in this project:
   - Domain: Repository(interface), use case.
   - Data: Repository Implement
