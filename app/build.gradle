@@ -6,9 +6,36 @@ plugins {
 
 apply plugin: "kotlin-kapt"
 
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+def keystoreProperties = new Properties()
+
+if (keystorePropertiesFile.canRead()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 android {
     compileSdk 32
+
+    signingConfigs {
+        if (keystoreProperties.containsKey('debugStoreFile')) {
+            debugConfig {
+                keyAlias keystoreProperties['debugKeyAlias']
+                keyPassword keystoreProperties['debugKeyPassword']
+                storeFile file(keystoreProperties['debugStoreFile'])
+                storePassword keystoreProperties['debugStorePassword']
+            }
+        }
+
+        if (keystoreProperties.containsKey('releaseStoreFile')) {
+            releaseConfig {
+                keyAlias keystoreProperties['releaseKeyAlias']
+                keyPassword keystoreProperties['releaseKeyPassword']
+                storeFile file(keystoreProperties['releaseStoreFile'])
+                storePassword keystoreProperties['releaseStorePassword']
+            }
+        }
+    }
 
     defaultConfig {
         applicationId "com.assignment.nab"
@@ -23,13 +50,21 @@ android {
     buildTypes {
 
         debug {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testCoverageEnabled true
+            debuggable true
+            if (keystoreProperties.containsKey('debugStoreFile')) {
+                signingConfig signingConfigs.debugConfig
+            }
         }
 
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (keystoreProperties.containsKey('releaseStoreFile')) {
+                signingConfig signingConfigs.releaseConfig
+            }
         }
 
     }
@@ -48,20 +83,21 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    viewBinding {
-        enabled true
-    }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
 
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
+    buildFeatures {
+        viewBinding true
     }
 
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+
+    lintOptions {
+        baseline(file("lint-baseline.xml"))
+    }
 }
 
 dependencies {
@@ -71,7 +107,7 @@ dependencies {
     implementation project(":networkmodel")
     implementation project(":network")
     implementation project(":base")
-
+    implementation project(":theme")
     implementation libs.corektx
     // appcompat
     implementation libs.appcompat
@@ -97,4 +133,6 @@ dependencies {
     testImplementation libs.truth
     testImplementation libs.roboElectric
 
+    // check root device
+    implementation libs.rootBear
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>WeatherMapper.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">NAB</a> &gt; <a href="index.source.html" class="el_package">com.assignment.model.weather</a> &gt; <span class="el_source">WeatherMapper.kt</span></div><h1>WeatherMapper.kt</h1><pre class="source lang-java linenums">package com.assignment.model.weather
+
+import com.assignment.networkmodel.ForecastRemote
+import com.assignment.utils.DateUtils
+
+object WeatherMapper {
+    fun toModel(forecastRemote: ForecastRemote): WeatherModel {
+<span class="pc bpc" id="L8" title="1 of 4 branches missed.">        val avgTem = ((forecastRemote.temp?.max ?: 0.0) +</span>
+<span class="pc bpc" id="L9" title="1 of 4 branches missed.">                (forecastRemote.temp?.min ?: 0.0)) / 2.0</span>
+<span class="fc" id="L10">        return WeatherModel(</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">            date = if (forecastRemote.date == null) &quot;&quot; else</span>
+<span class="fc" id="L12">                DateUtils.convertLongToDateTimeForWeather(forecastRemote.date!!),</span>
+<span class="pc bpc" id="L13" title="1 of 6 branches missed.">            description = forecastRemote.weatherList?.get(0)?.description.orEmpty(),</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">            pressure = forecastRemote.pressure ?: 0,</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">            humidity = forecastRemote.humidity ?: 0,</span>
+<span class="fc" id="L16">            avgTemperature = avgTem</span>
+        )
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

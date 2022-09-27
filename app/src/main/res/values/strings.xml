@@ -9,5 +9,7 @@
     <string name="description">Description: %1$s</string>
     <string name="speak">Speak</string>
     <string name="speak_not_support">Speak Not Support</string>
+    <string name="cannot_fetch_data">Cannot fetch data</string>
+    <string name="error_root_detected">This app can\'t be used on this device</string>
 
 </resources>

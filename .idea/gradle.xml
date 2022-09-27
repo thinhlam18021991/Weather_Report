@@ -17,6 +17,7 @@
             <option value="$PROJECT_DIR$/networkmodel" />
             <option value="$PROJECT_DIR$/security" />
             <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/theme" />
             <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>

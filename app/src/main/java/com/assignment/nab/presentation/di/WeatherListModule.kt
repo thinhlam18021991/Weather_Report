@@ -17,7 +17,6 @@ import javax.inject.Qualifier
 
 
 @Module
-// dependencies binding to the view model
 @InstallIn(ViewModelComponent::class)
 object WeatherListModule {
 
@@ -32,7 +31,6 @@ object WeatherListModule {
 }
 
 @Module
-// dependencies binding to the view model
 @InstallIn(ViewModelComponent::class)
 abstract class WeatherListBinding {
     @Binds

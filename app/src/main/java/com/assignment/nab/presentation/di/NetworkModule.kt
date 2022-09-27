@@ -7,15 +7,16 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 
 @Module
-// dependencies binding to the application
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
 
     @Provides
+    @Singleton
     fun provideRestAPIService(): RestApiService {
         return RestAPIBuilder.restAPIService(BuildConfig.END_POINT)
     }
