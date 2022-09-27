@@ -36,16 +36,13 @@ The purpose of this document is to provide developers the overview of this proje
   - utils module: provide utils such as dateutils, currency utils for feature module or non-feature module if they need
 
 ### Unit Test
-<img width="1189" alt="Screen Shot 2022-09-27 at 18 01 51" src="https://user-images.githubusercontent.com/74524101/192508887-d4bd44f9-4339-471f-80a6-14821cbce1a5.png">
 
-- Total Code Coverage for whole project is 56%, please check Jacoco report in folder Jacoco/index.html
 - Unit test for Use case, Repository, ViewModel, Utils, ViewHolder, Model, Model Mapper.
 
 ## Requirement steps to run application
 
 - Build App with file jks in keystore folder
-- For unit test, please check app module, model module, utils module
-
+- For unit test, please check app module, model module and utils module, you can run ./gradlew :rootCoverageReport to view coverage report in these modules, the report can be found in build/report/jacoco/index.html
 ## Checklist of requirements has done. 
 1. Using Kotlin 
 2. Implementing MVVM + Clean Architecture

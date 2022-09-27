@@ -1,6 +1,8 @@
 package com.assignment.nab.presentation
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -14,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class WeatherListActivity: AppCompatActivity() {
+class WeatherListActivity : AppCompatActivity() {
 
 
     private val viewModel by viewModels<WeatherListViewModel>()
@@ -40,24 +42,49 @@ class WeatherListActivity: AppCompatActivity() {
         checkRootDevice()
     }
 
-    private fun initView(key: String)
-    {
-        val decoration = SeparatorDecoration(this, R.color.divider, 1.5f)
-        binding.listWeather.addItemDecoration(decoration)
-        binding.listWeather.adapter = adapter
-        binding.btnGetWeather.setOnClickListener {
-            binding.edtInput.clearFocus()
-            viewModel.getListWeather(binding.edtInput.text.toString())
+    private fun initView(key: String) {
+        binding.run {
+            val decoration = SeparatorDecoration(
+                this@WeatherListActivity,
+                R.color.divider, 1.5f
+            )
+
+            edtInput.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
+
+                override fun onTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    before: Int,
+                    count: Int
+                ) {
+                    btnGetWeather.isEnabled = s != null && s.length >= SEARCH_KEYWORD_SIZE
+                }
+
+                override fun afterTextChanged(s: Editable?) {}
+            })
+
+            listWeather.addItemDecoration(decoration)
+            listWeather.adapter = adapter
+            btnGetWeather.setOnClickListener {
+                viewModel.getListWeather(edtInput.text.toString())
+            }
+            if (key.isNotBlank()) {
+                edtInput.setText(key)
+                viewModel.getListWeather(key)
+            }
         }
-        if (key.isNotBlank()) {
-            binding.edtInput.setText(key)
-            viewModel.getListWeather(key)
-        }
+
 
     }
 
-    private fun registerObservable()
-    {
+    private fun registerObservable() {
         viewModel.loadingLiveData.observe(this) {
             binding.loading.visibility = View.VISIBLE
         }
@@ -78,7 +105,7 @@ class WeatherListActivity: AppCompatActivity() {
         }
     }
 
-    // Save state in case randoom-deed or turn on dont keep activity setting on phone
+    // Save state in case on dont keep activity setting on phone
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         viewModel.onSaveInstanceState(outState)
@@ -90,8 +117,7 @@ class WeatherListActivity: AppCompatActivity() {
     // it request network and api key
     // rootbear can check root device
     // but it miss some cases
-    private fun checkRootDevice()
-    {
+    private fun checkRootDevice() {
         val rootBeer = RootBeer(this)
         if (rootBeer.isRooted) {
             this.createAlertDialog(getString(R.string.error_root_detected)) {
@@ -99,7 +125,9 @@ class WeatherListActivity: AppCompatActivity() {
             }
         }
     }
+
     companion object {
-        private const val SPEAK_TO_TEXT_REQUEST = 100
+        private const val SEARCH_KEYWORD_SIZE = 3
+
     }
 }
