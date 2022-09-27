@@ -38,7 +38,7 @@ The purpose of this document is to provide developers the overview of this proje
 ### Unit Test
 <img width="1189" alt="Screen Shot 2022-09-27 at 18 01 51" src="https://user-images.githubusercontent.com/74524101/192508887-d4bd44f9-4339-471f-80a6-14821cbce1a5.png">
 
-- Total Code Coverage for whole project is 56%
+- Total Code Coverage for whole project is 56%, please check Jacoco report in folder Jacoco/index.html
 - Unit test for Use case, Repository, ViewModel, Utils, ViewHolder, Model, Model Mapper.
 
 ## Requirement steps to run application
