@@ -1,5 +1,6 @@
 package com.assignment.nab.presentation
 
+import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,7 +18,7 @@ class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: Ge
 
     private val loading = MutableLiveData<Unit>()
     private val hideLoading = MutableLiveData<Unit>()
-
+    private var key: String = ""
     private val listWeather = MutableLiveData<List<WeatherModel>>()
     private val error = MutableLiveData<String>()
 
@@ -26,7 +27,11 @@ class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: Ge
     val listWeatherLiveData: LiveData<List<WeatherModel>> = listWeather
     val errorLiveData: LiveData<String> = error
 
+    val keySearch: String
+        get() = key
+
     fun getListWeather(cityName: String) {
+        key = keySearch
         viewModelScope.launch {
             loading.postValue(Unit)
             when (val result = getWeatherUseCase(cityName)) {
@@ -39,6 +44,22 @@ class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: Ge
             }
             hideLoading.postValue(Unit)
         }
+
+    }
+
+    fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(
+            KEY_KEY_SEARCH,
+            key,
+        )
+    }
+
+    fun onRestoreInstanceState(saveState: Bundle) {
+        key = saveState?.getString(KEY_KEY_SEARCH, "")
+    }
+
+    companion object {
+        private const val KEY_KEY_SEARCH = "KEY_KEY_SEARCH"
 
     }
 }

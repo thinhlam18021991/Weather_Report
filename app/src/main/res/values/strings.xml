@@ -7,4 +7,7 @@
     <string name="pressure">Pressure: %1$d</string>
     <string name="humidity">Humidity: %1$d%%</string>
     <string name="description">Description: %1$s</string>
+    <string name="speak">Speak</string>
+    <string name="speak_not_support">Speak Not Support</string>
+
 </resources>
