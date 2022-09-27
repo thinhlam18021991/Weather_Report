@@ -53,8 +53,8 @@ The purpose of this document is to provide developers the overview of this proje
 7. Exception handing - show **Dialog** when call API fail
 8. Cache handling - using okhttp caching
 9. Secure Android app from 
-* Store appId with C++
-* Use okhttp tls to set certification in app side (certificate pining) to make sure our request call to correct server, but I dont have certificate so I write an function to set with empty certificate, please check function applyCertificateIfNeeded in Certificate Object
+* Store appId with **C++**
+* Use **okhttp tls** to set certification in app side (certificate pining) to make sure our request call to correct server, but I dont have certificate so I write an function to set with empty certificate, please check function applyCertificateIfNeeded in Certificate Object
 * Decompile APK - using **proguardFiles** 
 * Rooted device - using **Rootbeer** , we can use **SafetyNet** to check also, **SafetyNet** more accurate but it require network and google api key, in this project I am using RootBear
 10. Accessibility for Disability Supports - WeatherApp supported for **talkback** and **scalling text** automatically
