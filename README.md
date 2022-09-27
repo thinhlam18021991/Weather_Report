@@ -29,11 +29,11 @@ The purpose of this document is to provide developers the overview of this proje
   - base module: contain base class using in this app such as base viewholder, dialog, etc.
   - model module: contain all models is being used in this app.
   - network: provide everything related to network for this app such as retrofit, okhttp, caching handling, etc.
-  - networkmodel module: contain model we got from API.
-  - security module: provide sensitive data, here is appId
+  - networkmodel module: contain model we get from API.
+  - security module: store and provide sensitive data, here is appId
   - share module: share class to use throughout this app, example network module need application class so we will use this module to provide application for network module
   - theme module: provide common resources (dimension, color, theme, style)
-  - utils module: provide utils such as dateutils, currency utils for feature module or non-feature module if they need
+  - utils module: provide utils such as dateutils, currencyutils, etc for feature module or non-feature module if they need
 
 ### Unit Test
 
