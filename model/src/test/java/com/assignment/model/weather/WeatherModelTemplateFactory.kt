@@ -6,7 +6,7 @@ import com.assignment.networkmodel.TemperatureRemote
 
 fun createWeatherModel() = WeatherModel(
     date = "Tue, 27 Sep 2022",
-    avgTemperature = 32.5,
+    avgTemperature = 30.0,
     pressure = 1008,
     humidity = 56,
     description = "description"
@@ -17,8 +17,7 @@ fun createChildWeatherRemote() = ChildWeatherRemote(
 )
 
 fun createTemperatureRemote() = TemperatureRemote (
-    min = 30.0,
-    max = 35.0,
+    day = 30.0,
 )
 
 fun createForecastRemote() = ForecastRemote(
