@@ -14,7 +14,6 @@ import com.assignment.nab.presentation.adapter.WeatherListAdapter
 import com.scottyab.rootbeer.RootBeer
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class WeatherListActivity : AppCompatActivity() {
 
@@ -86,7 +85,7 @@ class WeatherListActivity : AppCompatActivity() {
 
     private fun registerObservable() {
         viewModel.loadingLiveData.observe(this) {
-            binding.loading.visibility = View.VISIBLE
+            binding.loading.visibility = if (it) View.VISIBLE else View.GONE
         }
 
         viewModel.listWeatherLiveData.observe(this) {
@@ -98,10 +97,6 @@ class WeatherListActivity : AppCompatActivity() {
             createAlertDialog(
                 getString(R.string.cannot_fetch_data)
             )
-        }
-
-        viewModel.hideLoadingLiveData.observe(this) {
-            binding.loading.visibility = View.GONE
         }
     }
 

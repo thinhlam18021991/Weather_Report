@@ -16,14 +16,12 @@ import javax.inject.Inject
 class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: GetWeatherUseCase) :
     ViewModel() {
 
-    private val loading = MutableLiveData<Unit>()
-    private val hideLoading = MutableLiveData<Unit>()
+    private val loading = MutableLiveData<Boolean>()
     private var key: String = ""
     private val listWeather = MutableLiveData<List<WeatherModel>>()
     private val error = MutableLiveData<String>()
 
-    val loadingLiveData: LiveData<Unit> = loading
-    val hideLoadingLiveData: LiveData<Unit> = hideLoading
+    val loadingLiveData: LiveData<Boolean> = loading
     val listWeatherLiveData: LiveData<List<WeatherModel>> = listWeather
     val errorLiveData: LiveData<String> = error
 
@@ -33,16 +31,16 @@ class WeatherListViewModel @Inject constructor(private val getWeatherUseCase: Ge
     fun getListWeather(cityName: String) {
         key = keySearch
         viewModelScope.launch {
-            loading.postValue(Unit)
+            loading.value = true
             when (val result = getWeatherUseCase(cityName)) {
                 is Result.Success -> {
-                    listWeather.postValue(result.data)
+                    listWeather.value = result.data
                 }
                 is Result.Error -> {
-                    error.postValue(result.error)
+                    error.value = result.error
                 }
             }
-            hideLoading.postValue(Unit)
+            loading.value = false
         }
 
     }
