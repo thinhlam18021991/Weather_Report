@@ -51,7 +51,7 @@ The purpose of this document is to provide developers the overview of this proje
 5. Write UnitTests, please check app module, model module, utils module
 6. Acceptance Tests
 7. Exception handing - show **Dialog** when call API fail
-8. Cache handling - using okhttp caching
+8. Cache handling - using okhttp caching, turn on it by use ResponseCacheControl annotation
 9. Secure Android app from 
 * Store appId with **C++**
 * Use **okhttp tls** to set certification in app side (certificate pining) to make sure our request call to correct server, but I dont have certificate so I write an function to set with empty certificate, please check function applyCertificateIfNeeded in Certificate Object
